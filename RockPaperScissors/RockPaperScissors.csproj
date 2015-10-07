@@ -46,7 +46,11 @@
     <Compile Include="Enums\Choice.cs" />
     <Compile Include="Enums\Result.cs" />
     <Compile Include="Game.cs" />
-    <Compile Include="IComparables\Rock.cs" />
+    <Compile Include="IComparables\ComputerPlayerICom.cs" />
+    <Compile Include="IComparables\HumanPlayerICom.cs" />
+    <Compile Include="IComparables\MatchResultICom.cs" />
+    <Compile Include="IComparables\PlayerICom.cs" />
+    <Compile Include="IComparables\ThrowChoice.cs" />
     <Compile Include="Implementations\ComputerPlayer.cs" />
     <Compile Include="Implementations\ComputerSpock.cs" />
     <Compile Include="Implementations\HumanPlayer.cs" />

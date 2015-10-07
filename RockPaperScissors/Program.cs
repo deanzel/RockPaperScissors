@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RockPaperScissors.IComparables;
 using RockPaperScissors.Implementations;
 
 namespace RockPaperScissors
@@ -13,8 +14,7 @@ namespace RockPaperScissors
         {
             Console.WriteLine("Rock, Paper, Scissors...");
             Game newGame = new Game();
-            //int gameCount = 1;
-            //Dictionary<int, MatchResult> gameResults = new Dictionary<int, MatchResult>();
+            
 
             string input = "";
 
@@ -22,8 +22,9 @@ namespace RockPaperScissors
             {
                 //newGame.PlayRound(new HumanPlayer("Player 1"), new ComputerPlayer("Player 2"));
 
-                newGame.PlayLizardSpock(new HumanSpock("Spock 1"), new ComputerSpock("Computer Spock"));
-                //gameCount++;
+                //newGame.PlayLizardSpock(new HumanSpock("Spock 1"), new ComputerSpock("Computer Spock"));
+
+                newGame.PlayLizardSpockICom(new HumanPlayerICom("Player 1"), new ComputerPlayerICom("Computa Playa 2")); 
 
                 Console.Write("Would you like to play again? (enter \"Q\" to Quit): ");
                 input = Console.ReadLine();

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RockPaperScissors.Enums;
+using RockPaperScissors.IComparables;
 using RockPaperScissors.Implementations;
 
 namespace RockPaperScissors
@@ -93,6 +94,39 @@ namespace RockPaperScissors
             return result;
         }
 
+        //Rock, Paper, Scissors, Lizard, Spock with IComparables
+        public MatchResultICom PlayLizardSpockICom(PlayerICom p1, PlayerICom p2)
+        {
+            MatchResultICom result = new MatchResultICom();
+            result.Player1_Choice = p1.GetChoice();
+            result.Player2_Choice = p2.GetChoice();
+
+            int resultICom = result.Player1_Choice.CompareTo(result.Player2_Choice);
+
+            if (resultICom == 1)
+            {
+                result.Match_Result = Result.Win;
+                GameResults.Add(gameCount, result.Match_Result);
+            }
+            else if (resultICom == 0)
+            {
+                result.Match_Result = Result.Tie;
+                GameResults.Add(gameCount, result.Match_Result);
+            }
+            else
+            {
+                result.Match_Result = Result.Loss;
+                GameResults.Add(gameCount, result.Match_Result);
+            }
+
+            ProcessResultICom(p1, p2, result);
+            MatchHistoryICom(GameResults, p1, p2);
+            gameCount++;
+
+            return result;
+
+        }
+
 
         public void ProcessResult(Player Player1, Player Player2, MatchResult Result)
         {
@@ -104,7 +138,27 @@ namespace RockPaperScissors
             {
                 case Enums.Result.Win:
                     Console.WriteLine("{0} Wins!", Player1.Name);
-                    
+                    break;
+                case Enums.Result.Loss:
+                    Console.WriteLine("{0} Wins!", Player2.Name);
+                    break;
+                case Enums.Result.Tie:
+                    Console.WriteLine("You both Tie!");
+                    break;
+            }
+        }
+
+        //Refactored for ICom Classes method
+        public void ProcessResultICom(PlayerICom Player1, PlayerICom Player2, MatchResultICom Result)
+        {
+            Console.WriteLine("{0} picked {1}, {2} picked {3}", Player1.Name,
+            Enum.GetName(typeof(Choice), Result.Player1_Choice.throwChoice), Player2.Name,
+            Enum.GetName(typeof(Choice), Result.Player2_Choice.throwChoice));
+
+            switch (Result.Match_Result)
+            {
+                case Enums.Result.Win:
+                    Console.WriteLine("{0} Wins!", Player1.Name);
                     break;
                 case Enums.Result.Loss:
                     Console.WriteLine("{0} Wins!", Player2.Name);
@@ -141,6 +195,33 @@ namespace RockPaperScissors
             
             Console.WriteLine("{0} has {1} wins, {2} losses and {3} ties against {4}.", Player1.Name, wins, losses, ties, Player2.Name);
             
+        }
+
+        //Refactored for ICom Classes method
+        public void MatchHistoryICom(Dictionary<int, Result> results, PlayerICom Player1, PlayerICom Player2)
+        {
+            int wins = 0;
+            int losses = 0;
+            int ties = 0;
+
+            foreach (KeyValuePair<int, Result> result in results)
+            {
+                switch (result.Value)
+                {
+                    case Result.Win:
+                        wins++;
+                        break;
+                    case Result.Loss:
+                        losses++;
+                        break;
+                    default:
+                        ties++;
+                        break;
+                }
+            }
+
+            Console.WriteLine("{0} has {1} wins, {2} losses and {3} ties against {4}.", Player1.Name, wins, losses, ties, Player2.Name);
+
         }
     }
 }
