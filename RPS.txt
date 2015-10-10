@@ -1,0 +1,19 @@
+Rock, Paper, Scissors
+
+here are a few ideas for your Rock, Paper, Scissors project. Other than requirements you can feel free to take the game in whatever direction you want.
+
+Requirements:
+	1. Implement a weighted computer player. Rock 70%, Scissors 20%, Paper 10%
+	2. Implement a test project
+		Test project should include an always pick paper player
+		Write a 3 tests using this player (win, tie, lose)
+	
+Optional:
+	1. Rock, Paper, Scissors, Lizard, Spock
+	2. Implement dictionary to store game results
+		key can be game number
+	3. Implement Rock, Paper, Scissors as classes and use IComparable to compare them.
+	
+Challenge Lab:
+	Implement a game arcade usng the games you have written thus far. The arcade should use an interface to prompt the user with which game they want to play. Once selected the game should start and setup of that game should begin. 
+	
