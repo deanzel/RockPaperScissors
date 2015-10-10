@@ -130,7 +130,7 @@ namespace RockPaperScissors
 
         public void ProcessResult(Player Player1, Player Player2, MatchResult Result)
         {
-            Console.WriteLine("{0} picked {1}, {2} picked {3}", Player1.Name, 
+            Console.WriteLine("\n{0} picked {1}, {2} picked {3}", Player1.Name, 
             Enum.GetName(typeof(Choice), Result.Player1_Choice), Player2.Name, 
             Enum.GetName(typeof(Choice), Result.Player2_Choice));
 
@@ -151,7 +151,7 @@ namespace RockPaperScissors
         //Refactored for ICom Classes method
         public void ProcessResultICom(PlayerICom Player1, PlayerICom Player2, MatchResultICom Result)
         {
-            Console.WriteLine("{0} picked {1}, {2} picked {3}", Player1.Name,
+            Console.WriteLine("\n{0} picked {1}, {2} picked {3}", Player1.Name,
             Enum.GetName(typeof(Choice), Result.Player1_Choice.throwChoice), Player2.Name,
             Enum.GetName(typeof(Choice), Result.Player2_Choice.throwChoice));
 
@@ -221,7 +221,6 @@ namespace RockPaperScissors
             }
 
             Console.WriteLine("{0} has {1} wins, {2} losses and {3} ties against {4}.", Player1.Name, wins, losses, ties, Player2.Name);
-
         }
     }
 }
